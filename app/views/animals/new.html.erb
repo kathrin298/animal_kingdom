@@ -1,11 +1,12 @@
-<h1>Add the details of your animal</h1>
 
+
+<h1>Add the details of your animal</h1>
 
 <div class="container">
   <%= simple_form_for(@animal,  html: { class: "form-group w-50 p-5 mx-auto"}) do |f| %>
     <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit %>
   <% end %>
 </div>
+
