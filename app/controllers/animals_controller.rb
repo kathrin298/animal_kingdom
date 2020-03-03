@@ -1,7 +1,7 @@
 class AnimalsController < ApplicationController
 
   # skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_animal, only: [:show, :edit, :destroy]
+  before_action :find_animal, only: [:show, :edit, :destroy, :update, :delete]
 
   def index
     @animals = Animal.all
@@ -9,7 +9,6 @@ class AnimalsController < ApplicationController
   end
 
   def show
-    # @animal = Animal.find(params[:id])
     # authorize @animal
   end
 
@@ -32,6 +31,7 @@ class AnimalsController < ApplicationController
   def edit; end
 
   def update
+
     if @animal.update(animal_params)
       redirect_to animal_path(@animal)
     else
