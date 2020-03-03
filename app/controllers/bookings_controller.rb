@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :edit, :destroy]
+  before_action :find_booking, only: [:show, :edit, :update, :destroy]
 
   def index
     @bookings = Booking.all
@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
     @booking.user = current_user
-    if @booking.save
+    if @booking.start_date < @booking.end_date && @booking.save
       redirect_to booking_path(@booking)
     else
       render 'new'
@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :start_time, :duration, :total_fee, :animal, :user)
+    params.require(:booking).permit(:start_date, :end_date, :total_fee, :animal, :user)
   end
 
   def find_booking

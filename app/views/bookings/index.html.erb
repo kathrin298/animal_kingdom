@@ -4,5 +4,6 @@
   <p><%= booking.id %></p>
   <p><%= animal.name %></p>
   <p><%= user.email %></p>
+  <%= link_to 'delete', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
   <hr>
 <% end %>
