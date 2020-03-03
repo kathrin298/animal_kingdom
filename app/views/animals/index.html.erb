@@ -5,3 +5,18 @@
     <a class="btn btn-flat" href="#">Search animals now</a>
   </div>
 </div>
+
+  <div class="container">
+      <div class="card-deck">
+        <% @animals.each do |animal| %>
+          <div class="card">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
