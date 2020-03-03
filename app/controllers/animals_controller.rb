@@ -1,19 +1,23 @@
 class AnimalsController < ApplicationController
+
   before_action :find_animal, only: [:show, :edit, :destroy]
 
   def index
-    @animals = Animal.all
+    # @animals = Animal.all
+    @animals = policy_scope(Animal).order(created_at: :desc)
   end
 
   def show; end
 
   def new
     @animal = Animal.new
+    authorize @animal
   end
 
   def create
     @animal = Animal.new(animal_params)
     @animal.user = current_user
+    authorize @animal
     if @animal.save
       redirect_to animal_path(@animal)
     else
