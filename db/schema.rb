@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_023220) do
+ActiveRecord::Schema.define(version: 2020_03_03_041420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 2020_03_03_023220) do
     t.time "start_time"
     t.integer "duration"
     t.float "total_fee"
-    t.boolean "confirmed"
+    t.boolean "confirmed", default: false
     t.string "delivery_address"
-    t.boolean "delivery_included"
+    t.boolean "delivery_included", default: false
     t.bigint "animal_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
