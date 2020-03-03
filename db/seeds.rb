@@ -45,8 +45,10 @@ puts 'Seeding animals'
     hourly_rate: Faker::Number.between(from: 10, to: 100),
     photos: [],
     user: users.sample)
-  random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
-  file = URI.open(random_image_url)
-  animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
+  3.times do
+    random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
+    file = URI.open(random_image_url)
+    animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
+  end
   animal.save
 end
