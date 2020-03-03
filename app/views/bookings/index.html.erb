@@ -1,0 +1,8 @@
+<% @bookings.each do |booking| %>
+  <% animal = Animal.find(booking.animal_id) %>
+  <% user = User.find(booking.user_id) %>
+  <p><%= booking.id %></p>
+  <p><%= animal.name %></p>
+  <p><%= user.email %></p>
+  <hr>
+<% end %>
