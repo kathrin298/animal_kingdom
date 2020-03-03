@@ -7,15 +7,18 @@ class AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id])
+    authorize @animals
   end
 
   def new
     @animal = Animal.new
+    authorize @animals
   end
 
   def create
     @animal = Animal.new(animal_params)
     @animal.user = current_user
+    authorize @animals
     if @animal.save
       redirect_to animal_path(@animal)
     else

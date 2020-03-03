@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
 
-  # include pundit
-  # after action :verify... pundit commands here
+  before_action :authenticate_user!
+  include Pundit
+
+  # Pundit: white-list approach.
+  after_action :verify_authorized, except: :index, unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
 
 
   ## This is to sanitize in case you'd like to add anything else to the
@@ -15,4 +19,10 @@ class ApplicationController < ActionController::Base
     ## For additional in app/views/devise/registrations/edit.html.erb
     # devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   # end
+
+  private
+
+  def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
 end
