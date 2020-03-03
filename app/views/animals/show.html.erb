@@ -1,4 +1,4 @@
-    <div class="container">
+    <div class="container mb-5">
 
       <div class="d-flex">
         <img class="avatar-huge" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
@@ -16,7 +16,7 @@
       <h3>About <%= @animal.name %>:</h3>
       <p><%= @animal.description %></p>
 
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleControls" class="carousel" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block w-100" src="https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="First slide">
@@ -45,7 +45,6 @@
         <% end %>
 
     </div>
-
 
     <%# @animal.photos.each do |photo| %>
       <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
