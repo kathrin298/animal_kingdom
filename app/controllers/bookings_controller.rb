@@ -2,10 +2,12 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :destroy]
 
   def index
-    @booking = Booking.all
+    @bookings = Booking.all
   end
 
   def show
+    @animal = Animal.find(@booking.animal_id)
+    @user = User.find(@booking.user_id)
   end
 
   def new
@@ -13,9 +15,10 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @animal = Animal.find(params[:id])
+    @animal = Animal.find(params[:animal_id])
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
+    @booking.user = current_user
     if @booking.save
       redirect_to booking_path(@booking)
     else

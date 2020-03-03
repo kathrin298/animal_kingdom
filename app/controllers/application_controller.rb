@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^animals$)/
+  def skip_pundit?  # TODO remove bookings and add pundit for it
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^bookings$)/
   end
 end
