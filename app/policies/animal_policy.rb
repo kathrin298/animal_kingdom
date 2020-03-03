@@ -6,7 +6,7 @@ class AnimalPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    true
   end
 
   def show?
