@@ -33,7 +33,7 @@ users = [user1, user2, user3, user4]
 # Animal seeds
 puts 'Seeding animals'
 
-30.times do
+15.times do
   animal = Animal.new(
     name: Faker::Creature::Dog.name,
     species: Faker::Creature::Animal.name,
@@ -43,6 +43,10 @@ puts 'Seeding animals'
     category: Animal::CATEGORIES.sample,
     place_of_origin: Faker::Address.country,
     hourly_rate: Faker::Number.between(from: 10, to: 100),
+    photos: [],
     user: users.sample)
+  random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
+  file = URI.open(random_image_url)
+  animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
   animal.save
 end

@@ -8,6 +8,7 @@
 
 <% @animals.each do |animal| %>
   <p><%= animal.name %> <%= link_to 'show', animal_path(animal) %> <%= link_to 'edit', edit_animal_path(animal) %> <%= link_to 'delete', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <%= cl_image_tag animal.photos[0].key, height: 200, width: 200, crop: :fill %>
 <% end %>
 
 <%= link_to 'Add new animal', new_animal_path %>
