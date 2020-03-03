@@ -24,6 +24,6 @@ class AnimalPolicy < ApplicationPolicy
   private
 
   def belongs_to_user_or_is_admin?
-    record.user == user || user.admin
+    record.user == user #|| user.admin
   end
 end

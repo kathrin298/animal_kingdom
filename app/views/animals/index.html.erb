@@ -6,6 +6,7 @@
   </div>
 </div>
 
+<<<<<<< HEAD
   <div class="container">
       <div class="card-deck">
         <% @animals.each do |animal| %>
@@ -20,3 +21,25 @@
         <% end %>
       </div>
   </div>
+=======
+
+
+<div class="container">
+  <% @animals.each do |animal| %>
+    <p><%= animal.name %>
+    <%= link_to 'Show', animal_path(animal) %>
+    <% if policy(animal).edit? %>
+      <%= link_to 'edit', edit_animal_path(animal) %>
+    <% end %>
+    <% if policy(animal).destroy? %>
+      <%= link_to 'delete', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to 'Add new animal', new_animal_path %>
+
+
+
+>>>>>>> master
