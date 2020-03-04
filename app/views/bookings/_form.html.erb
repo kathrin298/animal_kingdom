@@ -1,0 +1,7 @@
+<%= simple_form_for [@animal, @booking] do |f| %>
+  <%= f.input :date %>
+  <%= f.input :start_time %>
+  <%= f.input :duration %>
+  <%#= f.input :total_fee %>
+  <%= f.button :submit, 'Book' %>
+<% end %>
