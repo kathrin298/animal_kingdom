@@ -33,7 +33,7 @@ users = [user1, user2, user3, user4]
 # Animal seeds
 puts 'Seeding animals'
 
-15.times do
+10.times do
   animal = Animal.new(
     name: Faker::Creature::Dog.name,
     species: Faker::Creature::Animal.name,
@@ -51,4 +51,23 @@ puts 'Seeding animals'
     animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
   end
   animal.save
+end
+
+
+
+# Okay, now let's seed a few bookings with reviews
+
+30.times do
+
+  booking = Booking.new(delivery_address: Faker::Address.full_address,
+                           delivery_included: true, user_id: rand(4), start_date: Date.new(2020,4,5),
+                           animal_id: rand(9), end_date: Date.new(2020,4,6))
+
+  review = Review.new(title: Faker::GreekPhilosophers.quote,
+                         content: Faker::TvShows::RickAndMorty.quote,
+                         rating: rand(5),
+                         user_id: rand(4))
+  review.booking = booking
+  review.save
+
 end

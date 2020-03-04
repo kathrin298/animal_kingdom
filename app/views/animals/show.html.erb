@@ -26,7 +26,7 @@
               <span><strong>Species:</strong> <%= @animal.species.capitalize  %></span>
             </div>
             <div class="d-flex p-1 animal-card-text">
-              <span><strong>Price:</strong> $<%= @animal.daily_rate %>/hr</span>
+              <span><strong>Price:</strong> $<%= @animal.daily_rate %>/day</span>
               <span>
                 <% if @animal.age %>
                   <strong>Age:</strong> <%= @animal.age %>
@@ -88,6 +88,17 @@
   <div class="row mb-5" id="animal-reviews">
     <div class="col-md-8 mx-auto border p-5">
       <h2>Reviews of <%= @animal.name %></h2>
+      <ul>
+        <% @animal.bookings.each do |booking| %>
+          <% booking.reviews.each do |review| %>
+            <li style="list-style-type: none;" class="border p-3">
+              <h5 class="d-flex p-1 animal-card-text">
+              <span> <%= review.title %></span> <span> <i class="far fa-star"></i> rating: <%= review.rating %>/5</span> </h5>
+              <p> <%= review.content %> </p>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
   </div>
 
