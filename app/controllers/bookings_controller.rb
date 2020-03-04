@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   def edit; end
 
   def update
-    if @booking.update(booking_params)
+    if @booking.end_date > Date.today && @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
       render 'new'
@@ -37,7 +37,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    if @booking.destroy
+    if @booking.end_date > Date.today && @booking.destroy
       redirect_to dashboard_bookings_path
     else
       render 'new'
