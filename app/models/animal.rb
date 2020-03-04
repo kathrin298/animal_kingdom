@@ -4,7 +4,7 @@ class Animal < ApplicationRecord
   has_many :bookings
   belongs_to :user
   has_many_attached :photos
-  validates :name, :species, :hourly_rate, :category, :gender, :user, presence: true
+  validates :name, :species, :daily_rate, :category, :gender, :user, presence: true
   validates :category, inclusion: { in: CATEGORIES }
   validates :gender, inclusion: { in: GENDERS }
 
