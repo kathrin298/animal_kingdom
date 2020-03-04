@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
 
   def destroy
     if @booking.destroy
-      redirect_to bookings_path
+      redirect_to dashboard_bookings_path
     else
       render 'new'
     end

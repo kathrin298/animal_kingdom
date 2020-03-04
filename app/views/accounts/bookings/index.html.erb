@@ -32,8 +32,6 @@
         <p><strong>Animal name:</strong> <%= booking.animal.name %></p>
         <p><strong>Total fee:</strong> <%= booking.total_fee %></p>
         <%= link_to 'View this booking', booking_path(booking) %>
-        <br>
-        <%= link_to 'Delete this booking', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
         <hr>
       <% end %>
     </div>
