@@ -7,4 +7,10 @@ class Animal < ApplicationRecord
   validates :name, :species, :hourly_rate, :category, :gender, :user, presence: true
   validates :category, inclusion: { in: CATEGORIES }
   validates :gender, inclusion: { in: GENDERS }
+
+  def unavailable_dates
+    bookings.pluck(:start_date, :end_date).map do |range|
+      { from: range[0], to: range[1] }
+    end
+  end
 end

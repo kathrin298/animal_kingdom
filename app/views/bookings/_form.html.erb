@@ -1,8 +1,18 @@
-<div class="container">
-  <%= simple_form_for [@animal, @booking] do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :total_fee %>
-    <%= f.button :submit %>
-  <% end %>
+<!-- <div class="container">
+  <%=# simple_form_for [@animal, @booking] do |f| %>
+    <%=# f.input :start_date %>
+    <%=# f.input :end_date %>
+    <%=# f.input :total_fee %>
+    <%=# f.button :submit %>
+  <%# end %>
 </div>
+ -->
+<div id='animal-booking-dates' data-unavailable="<%= @animal.unavailable_dates.to_json %>">
+    <% if current_user.id != @animal.user_id  %>
+       <%= simple_form_for([@animal, @booking]) do |f| %>
+           <%= f.input :start_date, as: :string, type: :text %>
+           <%= f.input :end_date, as: :string, type: :text %>
+           <%= f.submit "Book", class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+ </div>
