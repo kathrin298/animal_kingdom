@@ -57,16 +57,16 @@ end
 
 # Okay, now let's seed a few bookings with reviews
 
-6.times do
+30.times do
 
   booking = Booking.new(delivery_address: Faker::Address.full_address,
-                           delivery_included: true, user_id: 1, start_date: Date.new(2020,4,5),
-                           animal_id: 1, end_date: Date.new(2020,4,6))
+                           delivery_included: true, user_id: rand(4), start_date: Date.new(2020,4,5),
+                           animal_id: rand(9), end_date: Date.new(2020,4,6))
 
   review = Review.new(title: Faker::GreekPhilosophers.quote,
                          content: Faker::TvShows::RickAndMorty.quote,
                          rating: rand(5),
-                         user_id: rand(5))
+                         user_id: rand(4))
   review.booking = booking
   review.save
 
