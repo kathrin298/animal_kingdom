@@ -2,6 +2,8 @@ require 'faker'
 # emptying database
 puts 'Deleting existing instances'
 
+Review.destroy_all
+Booking.destroy_all
 Animal.destroy_all
 User.destroy_all
 
