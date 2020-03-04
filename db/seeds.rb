@@ -42,7 +42,7 @@ puts 'Seeding animals'
     gender: Animal::GENDERS.sample,
     category: Animal::CATEGORIES.sample,
     place_of_origin: Faker::Address.country,
-    hourly_rate: Faker::Number.between(from: 10, to: 100),
+    daily_rate: Faker::Number.between(from: 10, to: 100),
     photos: [],
     user: users.sample)
   3.times do
