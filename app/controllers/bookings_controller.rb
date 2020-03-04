@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
     @booking.user = current_user
-    if @booking.start_date < @booking.end_date && @booking.save
+    if @booking.save
       redirect_to booking_path(@booking)
     else
       render 'new'
