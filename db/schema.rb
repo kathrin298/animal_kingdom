@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_041420) do
+ActiveRecord::Schema.define(version: 2020_03_03_104309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_041420) do
     t.string "gender"
     t.string "category"
     t.string "place_of_origin"
-    t.integer "hourly_rate"
+    t.integer "daily_rate"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,9 +52,6 @@ ActiveRecord::Schema.define(version: 2020_03_03_041420) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "date"
-    t.time "start_time"
-    t.integer "duration"
     t.float "total_fee"
     t.boolean "confirmed", default: false
     t.string "delivery_address"
@@ -63,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_03_03_041420) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
     t.index ["animal_id"], name: "index_bookings_on_animal_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
