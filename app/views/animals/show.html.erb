@@ -5,13 +5,12 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis odio sed, aliquid magni, porro consequatur dolorum voluptatem laborum autem ipsam.</p>
     <div class="card" style="width: 24rem;">
       <div class="card-body">
-        <%= simple_form_for [@animal, @booking] do |f| %>
-          <%= f.input :date %>
-          <%= f.input :start_time %>
-          <%= f.input :duration %>
-          <%= f.input :total_fee %>
-          <%= f.button :submit %>
-        <% end %>
+          <%= simple_form_for [@animal, @booking] do |f| %>
+            <%= f.input :start_date %>>
+            <%= f.input :end_date %>
+            <%= f.input :total_fee %>
+            <%= f.button :submit %>
+          <% end %>
       </div>
     </div>
   </div>
