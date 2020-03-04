@@ -11,7 +11,7 @@ class Animal < ApplicationRecord
 
   def average_rating
     if !reviews.empty?
-      (reviews.sum(:rating).fdiv reviews.size).round(1)
+      (reviews.sum(:rating) / reviews.size.to_f).round(1)
     else
       "no reviews yet"
     end
