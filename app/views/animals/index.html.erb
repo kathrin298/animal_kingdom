@@ -16,12 +16,12 @@
             <h5><strong><%= animal.name %></strong></h5>
             <p>
               <span><i class="fas fa-star"></i></span>
-              <span>4.8</span>
+              <span><%= animal.average_rating %></span>
             </p>
           </div>
           <%= animal.description %>
           <%= link_to 'Show', animal_path(animal) %>
-          <p class="price">$<%= animal.daily_rate %>/day</p>
+          <p class="price">$<%= animal.daily_rate %>/daily</p>
           <% if policy(animal).edit? %>
             <%= link_to 'edit', edit_animal_path(animal) %>
           <% end %>
