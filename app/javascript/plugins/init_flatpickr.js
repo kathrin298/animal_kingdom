@@ -7,11 +7,18 @@ const endDateInput = document.getElementById('booking_end_date');
 // Check that the query selector id matches the one you put around your form.
 if (startDateInput) {
 const unavailableDates = JSON.parse(document.querySelector('#animal-booking-dates').dataset.unavailable)
+
+const newUnavailableDates = unavailableDates.filter((uDate) => {
+  if (uDate.from !== startDateInput.value) {
+    return uDate;
+  }
+})
+
 endDateInput.disabled = true
 
 flatpickr(startDateInput, {
   minDate: "today",
-  disable: unavailableDates,
+  disable: newUnavailableDates,
   dateFormat: "Y-m-d",
 });
 
@@ -21,7 +28,7 @@ startDateInput.addEventListener("change", (e) => {
   }
   flatpickr(endDateInput, {
     minDate: e.target.value,
-    disable: unavailableDates,
+    disable: newUnavailableDates,
     dateFormat: "Y-m-d"
     });
   })
