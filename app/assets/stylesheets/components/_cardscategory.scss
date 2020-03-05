@@ -1,7 +1,7 @@
 .card-category {
   background-size: cover;
   background-position: center;
-  height: 180px;
+  height: 260px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,6 +25,18 @@
 
   &.marines {
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('Marine.jpeg')
+  }
+
+  &.amphibians {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('Amphibians.jpeg')
+  }
+
+  &.insects {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('Insects.jpeg')
+  }
+
+  &.other {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('banner.jpeg')
   }
 }
 
