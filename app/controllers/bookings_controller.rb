@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
 
   def destroy
     if @booking.end_date > Date.today && @booking.destroy
-      redirect_to dashboard_bookings_path
+      redirect_to dashboard_path
     else
       render 'new'
     end
