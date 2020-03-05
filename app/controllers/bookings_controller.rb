@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
     @start_date = Date.parse(params[:booking][:start_date])
     @end_date = Date.parse(params[:booking][:end_date])
     @duration = (@end_date - @start_date).to_i
-    @booking.total_fee = @animal.daily_rate * @duration
+    @booking.total_fee = @booking.animal.daily_rate * @duration
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
