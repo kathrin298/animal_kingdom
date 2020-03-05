@@ -47,7 +47,10 @@
 
     <div class="col-md-4">
       <div class="bookings">
-        <% if current_user.id != @animal.user_id  %>
+        <% if current_user.nil? %>
+          <h4>Make a booking for <%= @animal.name %></h4>
+          <%= render :partial => 'bookings/form', animal: @animal, booking: @booking %>
+        <% elsif current_user.id != @animal.user_id  %>
           <h4>Make a booking for <%= @animal.name %></h4>
           <%= render :partial => 'bookings/form', animal: @animal, booking: @booking %>
         <% end %>
