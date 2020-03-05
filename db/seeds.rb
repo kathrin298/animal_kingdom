@@ -1,4 +1,5 @@
 require 'faker'
+require 'open-uri'
 # emptying database
 puts 'Deleting existing instances'
 
@@ -35,7 +36,7 @@ users = [user1, user2, user3, user4]
 # Animal seeds
 puts 'Seeding animals'
 
-10.times do
+6.times do
   animal = Animal.new(
     name: Faker::Creature::Dog.name,
     species: Faker::Creature::Animal.name,
@@ -47,7 +48,7 @@ puts 'Seeding animals'
     daily_rate: Faker::Number.between(from: 10, to: 100),
     photos: [],
     user: users.sample)
-  3.times do
+  2.times do
     random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
     file = URI.open(random_image_url)
     animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
@@ -59,7 +60,7 @@ end
 
 # Okay, now let's seed a few bookings with reviews
 
-30.times do
+100.times do
 
   booking = Booking.new(delivery_address: Faker::Address.full_address,
                            delivery_included: true, user_id: rand(4), start_date: Date.new(2020,4,5),

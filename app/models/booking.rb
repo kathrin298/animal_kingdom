@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :animal
   belongs_to :user
-  has_one :review #add-today
+  has_one :review
   validates :start_date, :end_date, :animal, :user, presence: true
   validate :end_date_after_start_date
 

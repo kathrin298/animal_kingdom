@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboard', to: 'accounts/bookings#index', as: 'dashboard'
+
   devise_for :users
   root to: 'animals#index'
   resources :animals do
