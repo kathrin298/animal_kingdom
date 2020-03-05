@@ -9,6 +9,12 @@ class Animal < ApplicationRecord
   validates :category, inclusion: { in: CATEGORIES }
   validates :gender, inclusion: { in: GENDERS }
 
+  def unavailable_dates
+    bookings.pluck(:start_date, :end_date).map do |range|
+      { from: range[0], to: range[1] }
+    end
+  end
+
   def average_rating  #add-today
     if !reviews.empty?
       reviews.sum(:rating) / reviews.size

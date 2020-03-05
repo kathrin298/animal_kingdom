@@ -1,3 +1,8 @@
 <h1>Edit the details of your booking:</h1>
-
-<%= render 'form', animal: @animal, booking: @booking %>
+<div id='animal-booking-dates' data-unavailable="<%= @animal.unavailable_dates.to_json %>">
+       <%= simple_form_for [@booking] do |f| %>
+           <%= f.input :start_date, as: :string, type: :text %>
+           <%= f.input :end_date, as: :string, type: :text %>
+           <%= f.submit "Submit", class: "btn btn-primary" %>
+        <% end %>
+ </div>
