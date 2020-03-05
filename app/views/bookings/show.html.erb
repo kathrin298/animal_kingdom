@@ -4,3 +4,14 @@
 <h2><%= @booking.total_fee %></h2>
 <%= link_to "Edit booking", edit_booking_path(@booking) %>
 <%= link_to 'delete', booking_path(@booking), method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+<hr>
+<br>
+<% if @booking.review.present? %>
+  <h2>Review title: <%= @booking.review.title %></h2>
+  <p>What you had to say: <%= @booking.review.content %></p>
+  <p>Your rating: <%= @booking.review.rating %></p>
+<% else %>
+  <h2>You haven't reviewed your booking with <%= @booking.animal.name %> the <%= @booking.animal.species %> yet!</h2>
+  <%= render :partial => 'reviews/form', booking: @booking, review: @review %>
+<% end %>

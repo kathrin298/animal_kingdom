@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
+    before_action :set_booking, only: [:new, :create]
+    skip_after_action :verify_authorized, :only => :create
 
-  #   before_action :set_booking, only: [:new, :create]
 
   def new
     @review = Review.new
@@ -8,10 +9,10 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.booking = @booking
+    @review.user = @booking.user
     if @review.save
-      # TODO: Change to booking
-      redirect_to root_path
-      # redirect_to animal_path(@animal.id)
+      redirect_to booking_path(@booking)
     else
       render :new
     end
@@ -19,12 +20,11 @@ class ReviewsController < ApplicationController
 
   private
 
-  # def set_booking
-  #   @booking = Booking.find(params[:booking_id])
-  # end
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
+  end
 
   def review_params
-    params.require(:review).permit(:rating)
+    params.require(:review).permit(:rating, :title, :content)
   end
-
-  end
+end
