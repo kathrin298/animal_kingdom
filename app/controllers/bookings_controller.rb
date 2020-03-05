@@ -1,10 +1,6 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @bookings = Booking.all
-  end
-
   def show
     @animal = Animal.find(@booking.animal_id)
     @user = User.find(@booking.user_id)
@@ -31,7 +27,10 @@ class BookingsController < ApplicationController
     raise
   end
 
-  def edit; end
+  def edit
+    @user = current_user
+    @animal = @booking.animal
+  end
 
   def update
     @start_date = params[:start_date]
@@ -41,13 +40,13 @@ class BookingsController < ApplicationController
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
-      render 'new'
+      render 'edit'
     end
   end
 
   def destroy
-    if @booking.destroy
-      redirect_to bookings_path
+    if @booking.end_date > Date.today && @booking.destroy
+      redirect_to dashboard_path
     else
       render 'new'
     end

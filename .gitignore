@@ -43,3 +43,6 @@ yarn-debug.log*
 .DS_Store
 .env*
 .env*
+tmp
+
+tmp/pids/server.pid
