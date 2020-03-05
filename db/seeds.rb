@@ -2,6 +2,8 @@ require 'faker'
 # emptying database
 puts 'Deleting existing instances'
 
+Review.destroy_all
+Booking.destroy_all
 Animal.destroy_all
 User.destroy_all
 
@@ -33,7 +35,7 @@ users = [user1, user2, user3, user4]
 # Animal seeds
 puts 'Seeding animals'
 
-15.times do
+10.times do
   animal = Animal.new(
     name: Faker::Creature::Dog.name,
     species: Faker::Creature::Animal.name,
@@ -42,11 +44,32 @@ puts 'Seeding animals'
     gender: Animal::GENDERS.sample,
     category: Animal::CATEGORIES.sample,
     place_of_origin: Faker::Address.country,
-    hourly_rate: Faker::Number.between(from: 10, to: 100),
+    daily_rate: Faker::Number.between(from: 10, to: 100),
     photos: [],
     user: users.sample)
-  random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
-  file = URI.open(random_image_url)
-  animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
+  3.times do
+    random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
+    file = URI.open(random_image_url)
+    animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
+  end
   animal.save
+end
+
+
+
+# Okay, now let's seed a few bookings with reviews
+
+30.times do
+
+  booking = Booking.new(delivery_address: Faker::Address.full_address,
+                           delivery_included: true, user_id: rand(4), start_date: Date.new(2020,4,5),
+                           animal_id: rand(9), end_date: Date.new(2020,4,6))
+
+  review = Review.new(title: Faker::GreekPhilosophers.quote,
+                         content: Faker::TvShows::RickAndMorty.quote,
+                         rating: rand(5),
+                         user_id: rand(4))
+  review.booking = booking
+  review.save
+
 end
