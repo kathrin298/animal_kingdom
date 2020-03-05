@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'dashboard/bookings', to: 'accounts/bookings#index', as: 'dashboard_bookings'
+  get 'dashboard', to: 'accounts/bookings#index', as: 'dashboard'
 
   devise_for :users
   root to: 'animals#index'
