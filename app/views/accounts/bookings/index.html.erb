@@ -1,17 +1,25 @@
 <div class="container" style="padding-top: 30px; background-color: white;">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <% if @future_bookings.present? %>
     <li class="nav-item">
       <a class="nav-link active" id="future-bookings-tab" data-toggle="tab" href="#future-bookings" role="tab" aria-controls="future-bookings" aria-selected="true">Future Bookings</a>
     </li>
+    <% end %>
+    <% if @past_bookings.present? %>
     <li class="nav-item">
       <a class="nav-link" id="past-bookings-tab" data-toggle="tab" href="#past-bookings" role="tab" aria-controls="past-bookings" aria-selected="false">Past Bookings</a>
     </li>
+    <% end %>
+    <% if @owner_bookings.present? %>
     <li class="nav-item">
       <a class="nav-link" id="owner-bookings-tab" data-toggle="tab" href="#owner-bookings" role="tab" aria-controls="owner-bookings" aria-selected="false">Owner Bookings</a>
     </li>
+    <% end %>
+    <% if @animals.present? %>
     <li class="nav-item">
       <a class="nav-link" id="owner-animals-tab" data-toggle="tab" href="#owner-animals" role="tab" aria-controls="owner-animals" aria-selected="false">Owner Animals</a>
     </li>
+    <% end %>
     <li class="nav-item">
       <a class="nav-link" id="add-animal-tab" data-toggle="tab" href="#add-animal" role="tab" aria-controls="add-animal" aria-selected="false">Add an animal</a>
     </li>
