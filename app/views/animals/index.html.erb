@@ -6,34 +6,46 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="cards">
-    <% @animals.each do |animal| %>
-    <div class="card">
-        <%= cl_image_tag animal.photos[0].key, height: 200, width: 200, crop: :fill, class: "card-img-top" %>
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <h5><strong><%= animal.name %></strong></h5>
-            <p>
-              <span><i class="fas fa-star"></i></span>
-              <span><%= animal.average_rating %></span>
-            </p>
-          </div>
-          <%= animal.description %>
-          <%= link_to 'Show', animal_path(animal) %>
-          <p class="price">$<%= animal.daily_rate %>/daily</p>
-          <% if policy(animal).edit? %>
-            <%= link_to 'edit', edit_animal_path(animal) %>
-          <% end %>
-          <% if policy(animal).destroy? %>
-            <%= link_to 'delete', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+<div class="cards">
+  <div class="card-category bird">
+    Birds
   </div>
-  <%= link_to 'Add new animal', new_animal_path, class: "text-center d-block mb-5" %>
+
+  <div class="card-category mammals">
+    Mammals
+  </div>
+
+  <div class="card-category reptiles">
+    Reptiles
+  </div>
+
+<div class="card-category marines">
+    Marines
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+    Amphibians
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+    Insects
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+    Other
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
