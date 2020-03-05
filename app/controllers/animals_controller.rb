@@ -57,7 +57,7 @@ class AnimalsController < ApplicationController
   end
 
   def animal_params # I think user needs to be delete here, I'll do it on the next branch
-    params.require(:animal).permit(:name, :category, :species, :hourly_rate, :gender, :user, :place_of_origin, :description, :age, photos: [])
+    params.require(:animal).permit(:name, :category, :species, :daily_rate, :gender, :user, :place_of_origin, :description, :age, photos: [])
   end
 
 end
