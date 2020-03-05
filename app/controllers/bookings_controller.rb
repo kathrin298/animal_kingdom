@@ -22,13 +22,16 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @user = current_user
+    @animal = @booking.animal
+  end
 
   def update
     if @booking.end_date > Date.today && @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
-      render 'new'
+      render 'edit'
     end
   end
 
