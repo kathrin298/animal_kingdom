@@ -15,4 +15,8 @@
 // Import Flatpickr stylesheet
 @import 'flatpickr/dist/flatpickr.css';
 
+// Specific Page stylesheets
 @import "pages/animal";
+
+// Application-wide stylesheet
+@import "layouts";

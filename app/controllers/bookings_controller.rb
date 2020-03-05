@@ -15,6 +15,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
     @booking.user = current_user
+    @start_date = Date.parse(params[:booking][:start_date])
+    @end_date = Date.parse(params[:booking][:end_date])
+    @duration = (@end_date - @start_date).to_i
+    @booking.total_fee = (@animal.daily_rate * @duration).round(2)
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -28,7 +32,11 @@ class BookingsController < ApplicationController
   end
 
   def update
-    if @booking.end_date > Date.today && @booking.update(booking_params)
+    @start_date = Date.parse(params[:booking][:start_date])
+    @end_date = Date.parse(params[:booking][:end_date])
+    @duration = (@end_date - @start_date).to_i
+    @booking.total_fee = @animal.daily_rate * @duration
+    if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
       render 'edit'
