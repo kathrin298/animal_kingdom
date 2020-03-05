@@ -1,5 +1,5 @@
 <div class="container">
-  <%= simple_form_for(animal,  html: { class: "form-group w-50 p-5 mx-auto"}) do |f| %>
+  <%= simple_form_for @animal do |f| %>
     <%= f.input :name %>
     <%= f.input :species, label: 'Animal Type' %>
     <%= f.input :daily_rate %>

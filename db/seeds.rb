@@ -64,7 +64,7 @@ end
 
   booking = Booking.new(delivery_address: Faker::Address.full_address,
                            delivery_included: true, user_id: rand(4), start_date: Date.new(2020,4,5),
-                           animal_id: rand(9), end_date: Date.new(2020,4,6))
+                           animal_id: rand(9), end_date: Date.new(2020,4,6), total_fee: rand(500))
 
   review = Review.new(title: Faker::GreekPhilosophers.quote,
                          content: Faker::TvShows::RickAndMorty.quote,
