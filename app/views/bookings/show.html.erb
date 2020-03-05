@@ -3,7 +3,7 @@
   <p><strong>Start date:</strong> <%= @booking.start_date %></p>
   <p><strong>End date:</strong> <%= @booking.end_date %></p>
   <p><strong>Total fee:</strong> <%= @booking.total_fee %></p>
-  <%= link_to "Return to my bookings", dashboard_bookings_path %>
+  <%= link_to "Return to my bookings", dashboard_path %>
   <br>
   <% if @booking.end_date > Date.today %>
     <%= link_to 'Edit this booking', edit_booking_path(@booking) %>
