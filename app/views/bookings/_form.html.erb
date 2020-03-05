@@ -1,12 +1,8 @@
 
-<div id='animal-booking-dates'>
-    <% if current_user.id != @animal.user_id  %>
-
+<div id='animal-booking-dates' data-unavailable="<%= @animal.unavailable_dates.to_json %>">
        <%= simple_form_for [@animal, @booking] do |f| %>
            <%= f.input :start_date, as: :string, type: :text %>
            <%= f.input :end_date, as: :string, type: :text %>
-           <%= f.submit "Book", class: "btn btn-primary" %>
+           <%= f.submit "Submit", class: "btn btn-primary" %>
         <% end %>
-
-    <% end %>
  </div>

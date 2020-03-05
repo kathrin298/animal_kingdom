@@ -14,8 +14,6 @@ flatpickr(startDateInput, {
   dateFormat: "Y-m-d",
 });
 
-console.log('im in the file')
-
 startDateInput.addEventListener("change", (e) => {
   if (startDateInput != "") {
     endDateInput.disabled = false
