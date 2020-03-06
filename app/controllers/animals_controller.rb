@@ -3,6 +3,16 @@ class AnimalsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_animal, only: [:show, :edit, :destroy, :update, :delete]
 
+  def search
+    if params[:query].blank?
+      @animals = Animal.all
+    else
+      sql_query = "species ILIKE :query OR category ILIKE :query"
+      @animals = Animal.where(sql_query, query: "%#{params[:query]}%")
+    end
+    authorize @animals
+  end
+
   def index
     # @animals = Animal.all
     @animals = policy_scope(Animal).order(created_at: :desc)
