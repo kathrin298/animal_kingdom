@@ -33,5 +33,39 @@
           </div>
         </div>
       </div>
+      <br>
+      <hr>
+      <% if @booking.end_date > Date.today %>
+        <% if @animal.reviews.present? %>
+        <div class="booking-page-reviews">
+          <h2>Reviews from past renters:</h2>
+          <br>
+          <ul>
+            <% @animal.bookings.each do |booking| %>
+              <% if booking.review.present? %>
+                <li style="list-style-type: none;" class="border p-3">
+                  <h5 class="d-flex p-1 animal-card-text">
+                  <span> <%= booking.review.title %></span> <span> <i class="far fa-star"></i> rating: <%= booking.review.rating %>/5</span> </h5>
+                  <p> <%= booking.review.content %> </p>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      <% else %>
+        <% if @booking.review.present? %>
+          <h2>Your review of <%= @animal.name %></h2>
+          <br>
+          <li style="list-style-type: none;" class="border p-3">
+            <h5 class="d-flex p-1 animal-card-text">
+            <span> <%= @booking.review.title %></span> <span> <i class="far fa-star"></i> rating: <%= @booking.review.rating %>/5</span> </h5>
+            <p> <%= @booking.review.content %> </p>
+          </li>
+        <% else %>
+          <h2>You haven't reviewed your booking with <%= @booking.animal.name %> the <%= @booking.animal.species %> yet!</h2>
+          <%= render :partial => 'reviews/form', booking: @booking, review: @review %>
+        <% end %>
+      <% end %>
     </div>
   </div>
