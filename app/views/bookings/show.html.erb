@@ -3,6 +3,15 @@
   <p><strong>Start date:</strong> <%= @booking.start_date %></p>
   <p><strong>End date:</strong> <%= @booking.end_date %></p>
   <p><strong>Total fee:</strong> <%= @booking.total_fee %></p>
+  <% if @booking.review.present? %>
+    <h2>Review title: <%= @booking.review.title %></h2>
+    <p>What you had to say: <%= @booking.review.content %></p>
+    <p>Your rating: <%= @booking.review.rating %></p>
+  <% else %>
+    <h2>You haven't reviewed your booking with <%= @booking.animal.name %> the <%= @booking.animal.species %> yet!</h2>
+    <%= render :partial => 'reviews/form', booking: @booking, review: @review %>
+  <% end %>
+  <br>
   <%= link_to "Return to my bookings", dashboard_path %>
   <br>
   <% if @booking.end_date > Date.today %>
