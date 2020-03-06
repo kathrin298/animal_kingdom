@@ -75,17 +75,17 @@ end
   animal = Animal.all.sample
 
   booking = Booking.new(delivery_address: Faker::Address.full_address,
-                           delivery_included: true, user_id: user_this_booking, start_date: st,
-                           end_date: ed)
+                        delivery_included: true, user_id: user_this_booking, start_date: st,
+                        end_date: ed)
   booking.animal = animal
 
   duration = (ed - st).to_i
   booking.total_fee = (animal.daily_rate * duration).round(2)
 
   review = Review.new(title: Faker::GreekPhilosophers.quote,
-                         content: Faker::TvShows::RickAndMorty.quote,
-                         rating: rand(2..5),
-                         user_id: user_this_booking)
+                      content: Faker::TvShows::RickAndMorty.quote,
+                      rating: rand(2..5),
+                      user_id: user_this_booking)
   review.booking = booking
   review.save
 
