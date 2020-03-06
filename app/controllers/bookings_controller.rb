@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   def show
     @animal = Animal.find(@booking.animal_id)
     @user = User.find(@booking.user_id)
+    @review = Review.new
   end
 
   def new
