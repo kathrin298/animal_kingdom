@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
     if @booking.end_date > Date.today && @booking.destroy
       redirect_to dashboard_path
     else
-      render 'new'
+      render 'bookings/index'
     end
   end
 
