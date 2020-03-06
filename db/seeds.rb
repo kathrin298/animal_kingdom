@@ -1,6 +1,9 @@
 require 'faker'
 require 'open-uri'
 # emptying database
+
+# Add some !'s' to .create() for error outputting
+
 puts 'Deleting existing instances'
 
 Review.destroy_all
