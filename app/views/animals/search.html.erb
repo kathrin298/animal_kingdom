@@ -7,12 +7,15 @@
       class: "form-control",
       placeholder: "Find an animal"
     %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-primary", style: "border-radius: 9px;" %>
   <% end %>
+
+  <h1 style="padding: 20px;">Showing <%= pluralize @animals.size, 'result' %> for "<%= params[:query] %>"</h1>
 
   <div class="cards">
       <% @animals.each do |animal| %>
       <div class="card">
+          <a href="/animals/<% @animals.id %>">
           <%= cl_image_tag animal.photos[0].key, height: 200, width: 200, crop: :fill, class: "card-img-top" %>
           <div class="card-body">
             <div class="d-flex justify-content-between">
@@ -32,8 +35,16 @@
               <%= link_to 'delete', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
           </div>
+          </a>
         </div>
       <% end %>
     </div>
 
 </div>
+
+
+# add a filter
+# less box shadow
+# header
+# add animal species and category
+# make card clickable and remove show
