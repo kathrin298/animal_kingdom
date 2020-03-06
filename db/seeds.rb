@@ -39,7 +39,7 @@ users = [user1, user2, user3, user4]
 # Animal seeds
 puts 'Seeding animals'
 
-6.times do
+30.times do
   animal = Animal.new(
     name: Faker::Creature::Dog.name,
     species: Faker::Creature::Animal.name,
@@ -62,18 +62,32 @@ end
 
 
 # Okay, now let's seed a few bookings with reviews
-
+puts "Seeding bookings and reviews..."
 100.times do
 
+  m = rand(1..7)
+  sd = rand(1..15)
+  ed = sd + rand(1..15)
+  st = Date.new(2020,m,sd)
+  ed = Date.new(2020,m,ed)
+
+  user_this_booking = users.sample
+  animal = Animal.all.sample
+
   booking = Booking.new(delivery_address: Faker::Address.full_address,
-                           delivery_included: true, user_id: rand(4), start_date: Date.new(2020,4,5),
-                           animal_id: rand(9), end_date: Date.new(2020,4,6), total_fee: rand(500))
+                        delivery_included: true, start_date: st,
+                        end_date: ed)
+  booking.animal = animal
+  booking.user = user_this_booking
+
+  duration = (ed - st).to_i
+  booking.total_fee = (animal.daily_rate * duration).round(2)
 
   review = Review.new(title: Faker::GreekPhilosophers.quote,
-                         content: Faker::TvShows::RickAndMorty.quote,
-                         rating: rand(5),
-                         user_id: rand(4))
+                      content: Faker::TvShows::RickAndMorty.quote,
+                      rating: rand(2..5))
   review.booking = booking
+  review.user = user_this_booking
   review.save
 
 end
