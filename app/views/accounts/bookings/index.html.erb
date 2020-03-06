@@ -27,57 +27,90 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="future-bookings" role="tabpanel" aria-labelledby="future-bookings-tab">
       <% @future_bookings.each do |booking| %>
-        <h4>Your booking with <%= booking.animal.name %> the <%= booking.animal.species %>:</h4>
-        <p><strong>Start date:</strong> <%= booking.start_date %></p>
-        <p><strong>End date:</strong> <%= booking.end_date %></p>
-        <p><strong>Total fee:</strong> <%= booking.total_fee %></p>
-        <%= link_to 'View this booking', booking_path(booking) %>
-        <br>
-        <%= link_to 'Edit this booking', edit_booking_path(booking) %>
-        <br>
-        <%= link_to 'Delete this booking', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
-        <hr>
+        <div class="card-product">
+          <%= cl_image_tag booking.animal.photos[0].key, width: 200, height: 200, class: "card-product-image" %>
+          <div class="card-product-infos">
+            <div class="booking-details">
+              <h2>Your booking with <%= booking.animal.name %> the <%= booking.animal.species %>:</h2>
+              <p><strong>Start date:</strong> <%= booking.start_date %></p>
+              <p><strong>End date:</strong> <%= booking.end_date %></p>
+              <p><strong>Total fee:</strong> <%= booking.total_fee %></p>
+            </div>
+            <div class="booking-links">
+              <%= link_to 'View booking', booking_path(booking) %>
+              <br>
+              <%= link_to 'Edit booking', edit_booking_path(booking) %>
+              <br>
+              <%= link_to 'Delete booking', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
     <div class="tab-pane fade" id="past-bookings" role="tabpanel" aria-labelledby="past-bookings-tab">
       <% @past_bookings.each do |booking| %>
-        <p><strong>Booking for:</strong> <%= booking.user.email %></p>
-        <p><strong>Booking ID#:</strong> <%= booking.id %></p>
-        <p><strong>Animal name:</strong> <%= booking.animal.name %></p>
-        <p><strong>Total fee:</strong> <%= booking.total_fee %></p>
-        <%= link_to 'View this booking', booking_path(booking) %>
-        <hr>
+        <div class="card-product">
+          <%= cl_image_tag booking.animal.photos[0].key, width: 200, height: 200, class: "card-product-image" %>
+          <div class="card-product-infos">
+            <div class="booking-details">
+              <h2>Your booking with <%= booking.animal.name %> the <%= booking.animal.species %>:</h2>
+              <p><strong>Start date:</strong> <%= booking.start_date %></p>
+              <p><strong>End date:</strong> <%= booking.end_date %></p>
+              <p><strong>Total fee:</strong> <%= booking.total_fee %></p>
+            </div>
+            <div class="booking-links">
+              <%= link_to 'View booking', booking_path(booking) %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
     <div class="tab-pane fade" id="owner-bookings" role="tabpanel" aria-labelledby="owner-bookings-tab">
       <% @owner_bookings.each do |booking| %>
-        <p><strong>Booking for:</strong> <%= booking.user.email %></p>
-        <p><strong>Booking ID#:</strong> <%= booking.id %></p>
-        <p><strong>Animal name:</strong> <%= booking.animal.name %></p>
-        <p><strong>Total fee:</strong> <%= booking.total_fee %></p>
-        <%= link_to 'View this booking', booking_path(booking) %>
-        <br>
-        <%= link_to 'Delete this booking', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
-        <hr>
+        <div class="card-product">
+          <%= cl_image_tag booking.animal.photos[0].key, width: 200, height: 200, class: "card-product-image" %>
+          <div class="card-product-infos">
+            <div class="booking-details">
+              <h2>Your booking with <%= booking.animal.name %> the <%= booking.animal.species %>:</h2>
+              <p><strong>Start date:</strong> <%= booking.start_date %></p>
+              <p><strong>End date:</strong> <%= booking.end_date %></p>
+              <p><strong>Total fee:</strong> <%= booking.total_fee %></p>
+            </div>
+            <div class="booking-links">
+              <%= link_to 'View booking', booking_path(booking) %>
+              <br>
+              <%= link_to 'Edit booking', edit_booking_path(booking) %>
+              <br>
+              <%= link_to 'Delete booking', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
     <div class="tab-pane fade" id="owner-animals" role="tabpanel" aria-labelledby="owner-animals-tab">
       <% @animals.each do |animal| %>
-        <h4>Details for <%= animal.name %> the <%= animal.species %></h4>
-        <p><strong>Age:</strong> <%= animal.age %></p>
-        <p><strong>Gender:</strong> <%= animal.gender %></p>
-        <p><strong>Category:</strong> <%= animal.category %></p>
-        <p><strong>Place of origin:</strong> <%= animal.place_of_origin %></p>
-        <%= link_to 'View this animal', animal_path(animal) %>
-        <br>
-        <%= link_to 'Edit this animal', edit_animal_path(animal) %>
-        <br>
-        <%= link_to 'Delete this animal', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %>
-        <hr>
+        <div class="card-product">
+          <%= cl_image_tag animal.photos[0].key, width: 200, height: 200, class: "card-product-image" %>
+          <div class="card-product-infos">
+            <div class="animal-details">
+              <h2><%= animal.name %> the <%= animal.species %>:</h2>
+              <p><strong>Species:</strong> <%= animal.species %></p>
+              <p><strong>Age:</strong> <%= animal.age %></p>
+              <p><strong>Gender:</strong> <%= animal.gender %></p>
+            </div>
+            <div class="animal-links">
+              <%= link_to 'View animal', animal_path(animal) %>
+              <br>
+              <%= link_to 'Edit animal', edit_animal_path(animal) %>
+              <br>
+              <%= link_to 'Delete animal', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
     <div class="tab-pane fade" id="add-animal" role="tabpanel" aria-labelledby="add-animal-tab">
-      <!-- Add an animal form code goes here -->
+      <%= render partial: 'animals/form' %>
     </div>
   </div>
 </div>
