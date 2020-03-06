@@ -23,4 +23,13 @@ class Animal < ApplicationRecord
       "no reviews yet"
     end
   end
+
+  def get_category
+    if self.category != 'Marine' && self.category != 'Other'
+      self.category[0..-2]
+    else
+      self.category
+    end
+
+  end
 end

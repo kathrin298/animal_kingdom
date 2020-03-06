@@ -25,7 +25,24 @@
 }
 
 
-#searchbar-wrapper {
+
+#searchbar-homepage {
+  width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // padding: 0 30px
+
+  form {
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.searchbar-wrapper {
   width: 480px;
   display: flex;
   align-items: center;
@@ -40,4 +57,8 @@
 }
 
 
-
+.serp-searchbar-container {
+  border: 1px solid #E0E0E0;
+  width: 70%;
+  margin: 0 auto;
+}
