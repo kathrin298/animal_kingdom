@@ -47,7 +47,7 @@
         </div>
       <% end %>
     </div>
-    <div class="tab-pane fade" id="past-bookings" role="tabpanel" aria-labelledby="past-bookings-tab">
+    <div class="tab-pane fade show active" id="past-bookings" role="tabpanel" aria-labelledby="past-bookings-tab">
       <% @past_bookings.each do |booking| %>
         <div class="card-product">
           <%= cl_image_tag booking.animal.photos[0].key, width: 200, height: 200, class: "card-product-image" %>
@@ -60,16 +60,7 @@
             </div>
             <div class="booking-links">
               <%= link_to 'View booking', booking_path(booking) %>
-          </div>
-        </div>
-        <div class="card-product">
-          <%= cl_image_tag booking.animal.photos[0].key, width: 200, height: 200, class: "card-product-image" %>
-          <div class="card-product-infos">
-            <h2>Your booking with <%= booking.animal.name %> the <%= booking.animal.species %>:</h2>
-            <p><strong>Start date:</strong> <%= booking.start_date %></p>
-            <p><strong>End date:</strong> <%= booking.end_date %></p>
-            <p><strong>Total fee:</strong> <%= booking.total_fee %></p>
-            <%= link_to 'View this booking', booking_path(booking) %>
+            </div>
           </div>
         </div>
       <% end %>
