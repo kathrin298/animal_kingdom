@@ -87,7 +87,7 @@ puts "Seeding bookings and reviews..."
                       content: Faker::TvShows::RickAndMorty.quote,
                       rating: rand(2..5))
   review.booking = booking
-  review.user = user
+  review.user = user_this_booking
   review.save
 
 end
