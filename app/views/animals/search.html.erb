@@ -37,13 +37,9 @@
               <%= animal.description %>
 
               <p class="price">$<%= animal.daily_rate %>/daily</p>
-              <p class="card-search-category"> <%= animal.get_category %></p>
-              <%# if policy(animal).edit? %>
-                <%#= link_to 'edit', edit_animal_path(animal) %>
-              <%# end %>
-              <%# if policy(animal).destroy? %>
-                <%#= link_to 'delete', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %>
-              <%# end %>
+              <p class="d-flex justify-content-between card-search-category">
+                <%= animal.get_category %>
+              </p>
             </div>
           </div>
        <% end %>
