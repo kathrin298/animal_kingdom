@@ -3,7 +3,7 @@
     <h1>Rent an exotic animal to liven up your next event!</h1>
     <p>Totally a good idea, and not remotely dangerous whatsoever.</p>
 
-    <div class="searchbar-wrapper" id="serp-searchbar-container" >
+    <div id="searchbar-homepage"  >
       <%= form_tag search_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
@@ -14,6 +14,7 @@
            <i class="fas fa-search"></i>
         <% end %>
       <% end %>
+       <%= link_to "Or See All the Animals", search_path, class: "btn-flat"  %>
      </div>
   </div>
 </div>
