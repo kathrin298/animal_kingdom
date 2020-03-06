@@ -1,50 +1,54 @@
 
 <div class="container">
 
-  <%= form_tag search_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find an animal"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary", style: "border-radius: 9px;" %>
-  <% end %>
+    <div class="searchbar-wrapper serp-searchbar-container">
+      <%= form_tag search_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "search-bar",
+          style: "width: 300px",
+          placeholder: "Search for an animal.."
+        %>
+        <%= button_tag(type: 'submit', class: "btn-search") do %>
+           <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+     </div>
 
-  <h1 style="padding: 20px;">Showing <%= pluralize @animals.size, 'result' %> for "<%= params[:query] %>"</h1>
+  <% if params[:query]==""  %>
+    <h1 style="padding: 20px;">Showing all our animals</h1>
+  <% else %>
+    <h1 style="padding: 20px;">Showing <%= pluralize @animals.size, 'result' %> for "<%= params[:query] %>"</h1>
+  <% end %>
 
   <div class="cards">
       <% @animals.each do |animal| %>
-      <div class="card">
-          <a href="/animals/<% @animals.id %>">
-          <%= cl_image_tag animal.photos[0].key, height: 200, width: 200, crop: :fill, class: "card-img-top" %>
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <h5><strong><%= animal.name %></strong></h5>
-              <p>
-                <span><i class="fas fa-star"></i></span>
-                <span><%= animal.average_rating %></span>
-              </p>
+        <%= link_to animal_path(animal) do %>
+          <div class="card">
+            <%= cl_image_tag animal.photos[0].key, height: 200, width: 200, crop: :fill, class: "card-img-top" %>
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <h5><strong><%= animal.name %></strong> – <%= animal.species.capitalize %> </h5>
+                <p>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><%= animal.average_rating %></span>
+                </p>
+              </div>
+              <%= animal.description %>
+
+              <p class="price">$<%= animal.daily_rate %>/daily</p>
+              <p class="card-search-category"> <%= animal.get_category %></p>
+              <% if policy(animal).edit? %>
+                <%= link_to 'edit', edit_animal_path(animal) %>
+              <% end %>
+              <% if policy(animal).destroy? %>
+                <%= link_to 'delete', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
             </div>
-            <%= animal.description %>
-            <%= link_to 'Show', animal_path(animal) %>
-            <p class="price">$<%= animal.daily_rate %>/daily</p>
-            <% if policy(animal).edit? %>
-              <%= link_to 'edit', edit_animal_path(animal) %>
-            <% end %>
-            <% if policy(animal).destroy? %>
-              <%= link_to 'delete', animal_path(animal), method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
           </div>
-          </a>
-        </div>
+       <% end %>
       <% end %>
     </div>
 
 </div>
 
-
-# add a filter
-# less box shadow
-# header
-# add animal species and category
-# make card clickable and remove show

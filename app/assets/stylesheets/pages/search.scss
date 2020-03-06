@@ -22,7 +22,7 @@
 }
 
 
-#searchbar-wrapper {
+.searchbar-wrapper {
   background-color: white;
   border-radius: 20px;
   width: 330px;
@@ -31,4 +31,8 @@
   justify-content: center;
 }
 
-
+.serp-searchbar-container {
+  border: 1px solid #E0E0E0;
+  width: 70%;
+  margin: 0 auto;
+}
