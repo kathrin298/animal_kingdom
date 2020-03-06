@@ -62,7 +62,7 @@ end
 
 
 # Okay, now let's seed a few bookings with reviews
-
+puts "Seeding bookings and reviews..."
 200.times do
 
   m = rand(1..7)
