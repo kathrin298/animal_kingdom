@@ -1,24 +1,37 @@
 <div class="container" style="margin-top: 30px;">
-  <h4>Your booking with <%= @booking.animal.name %> the <%= @booking.animal.species %>:</h4>
-  <p><strong>Start date:</strong> <%= @booking.start_date %></p>
-  <p><strong>End date:</strong> <%= @booking.end_date %></p>
-  <p><strong>Total fee:</strong> <%= @booking.total_fee %></p>
-  <% if @booking.review.present? %>
-    <h2>Review title: <%= @booking.review.title %></h2>
-    <p>What you had to say: <%= @booking.review.content %></p>
-    <p>Your rating: <%= @booking.review.rating %></p>
-  <% else %>
-    <h2>You haven't reviewed your booking with <%= @booking.animal.name %> the <%= @booking.animal.species %> yet!</h2>
-    <%= render :partial => 'reviews/form', booking: @booking, review: @review %>
-  <% end %>
-  <br>
-  <%= link_to "Return to my bookings", dashboard_path %>
-  <br>
-  <% if @booking.end_date > Date.today %>
-    <%= link_to 'Edit this booking', edit_booking_path(@booking) %>
-  <% end %>
-  <br>
-  <% if @booking.end_date > Date.today %>
-    <%= link_to 'Delete this booking', booking_path(@booking), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-</div>
+  <div class="card-trip">
+    <%= cl_image_tag @animal.photos[0].key, class: "card-booking-image" %>
+    <div class="card-trip-infos">
+      <h1>Your booking with <%= @animal.name %> the <%= @animal.species %></h1>
+      <div class="card-trip-details">
+        <div id="animal-details">
+          <h2>Animal details:</h2>
+          <p>Name: <%= @animal.name %></p>
+          <p>Age: <%= @animal.age %></p>
+          <p>Gender: <%= @animal.gender %></p>
+          <p>Origin: <%= @animal.place_of_origin %></p>
+          <p>Description: <%= @animal.description %></p>
+        </div>
+        <div id="price-and-nav">
+          <div>
+            <%= link_to "Return to my bookings", dashboard_path %>
+            <br>
+            <% if @booking.end_date > Date.today %>
+              <%= link_to 'Edit this booking', edit_booking_path(@booking) %>
+            <% end %>
+            <br>
+            <% if @booking.end_date > Date.today %>
+              <%= link_to 'Delete this booking', booking_path(@booking), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+          <br>
+          <br>
+          <div>
+            <p><strong>Start date:</strong> <%= @booking.start_date %></p>
+            <p><strong>End date:</strong> <%= @booking.end_date %></p>
+            <h2 class="card-trip-pricing">Total fee: $<%= @booking.total_fee %>0</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
