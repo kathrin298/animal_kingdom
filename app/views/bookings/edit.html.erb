@@ -1,3 +1,4 @@
+<div class="container mt-5">
 <h1>Edit the details of your booking:</h1>
 <div id='animal-booking-dates' data-unavailable="<%= @animal.unavailable_dates.to_json %>">
        <%= simple_form_for [@booking] do |f| %>
@@ -6,3 +7,4 @@
            <%= f.submit "Submit", class: "btn btn-primary" %>
         <% end %>
  </div>
+</div>
