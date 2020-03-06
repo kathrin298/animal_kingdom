@@ -1,0 +1,55 @@
+.homepage-card-product {
+  overflow: hidden;
+  height: 240px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.homepage-card-product img {
+  height: 100%;
+  width: 240px;
+  object-fit: cover;
+}
+
+.homepage-card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.homepage-card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.homepage-card-product .homepage-card-product-infos {
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#cards-header {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.bottom-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cards-container {
+  width: 60%;
+}
+

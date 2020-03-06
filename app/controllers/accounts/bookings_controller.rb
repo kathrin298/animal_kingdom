@@ -6,7 +6,7 @@ class Accounts::BookingsController < ApplicationController
     @animal = Animal.new
     @past_bookings = @user.bookings.select{ |booking| booking.end_date < Date.today }
     @future_bookings = @user.bookings.select{ |booking| booking.end_date > Date.today }
-    @owner_bookings = @user.bookings.select{ |booking| booking.animal.user == current_user }
+    @owner_bookings = @animal.bookings.select{ |booking| booking.user == current_user }
     @animals = @user.animals
   end
 end
