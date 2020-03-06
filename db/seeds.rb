@@ -51,7 +51,7 @@ puts 'Seeding animals'
     daily_rate: Faker::Number.between(from: 10, to: 100),
     photos: [],
     user: users.sample)
-  1.times do
+  2.times do
     random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
     file = URI.open(random_image_url)
     animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
@@ -80,12 +80,14 @@ def booking(sd, ed, m, users)
   duration = (ed - st).to_i
   booking.total_fee = (animal.daily_rate * duration).round(2)
 
-  review = Review.new(title: Faker::GreekPhilosophers.quote,
-                      content: Faker::TvShows::RickAndMorty.quote,
-                      rating: rand(2..5))
-  review.booking = booking
-  review.user = user_this_booking
-  review.save
+  if rand(1..2) == 1
+    review = Review.new(title: Faker::GreekPhilosophers.quote,
+                        content: Faker::TvShows::RickAndMorty.quote,
+                        rating: rand(2..5))
+    review.booking = booking
+    review.user = user_this_booking
+    review.save
+  end
 end
 
 booking(12, 13, 1, users)
@@ -96,8 +98,6 @@ booking(18, 19, 1, users)
 booking(19, 20, 1, users)
 booking(20, 22, 1, users)
 booking(12, 13, 2, users)
-booking(13, 17, 2, users)
-booking(17, 20, 2, users)
 booking(21, 23, 2, users)
 booking(24, 26, 2, users)
 booking(26, 28, 2, users)
@@ -107,7 +107,6 @@ booking(5, 6, 3, users)
 booking(7, 9, 3, users)
 booking(12, 15, 3, users)
 booking(16, 18, 3, users)
-booking(12, 20, 3, users)
 booking(20, 23, 3, users)
 booking(1, 4, 4, users)
 booking(6, 9, 4, users)
