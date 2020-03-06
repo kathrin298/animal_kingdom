@@ -93,7 +93,11 @@
 
   <div class="row mb-5" id="animal-reviews">
     <div class="col-md-8 mx-auto border p-5">
+      <div class="d-flex justify-content-between">
       <h2>Reviews of <%= @animal.name %></h2>
+      <h5>Rating <i class="far fa-star"></i> <%= @animal.average_rating %></h5>
+
+      </div>
       <ul>
         <% @animal.bookings.each do |booking| %>
           <% if booking.review.present? %>
