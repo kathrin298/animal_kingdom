@@ -47,7 +47,7 @@
         </div>
       <% end %>
     </div>
-    <div class="tab-pane fade show active" id="past-bookings" role="tabpanel" aria-labelledby="past-bookings-tab">
+    <div class="tab-pane fade" id="past-bookings" role="tabpanel" aria-labelledby="past-bookings-tab">
       <% @past_bookings.each do |booking| %>
         <div class="card-product">
           <%= cl_image_tag booking.animal.photos[0].key, width: 200, height: 200, class: "card-product-image" %>
