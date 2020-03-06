@@ -3,6 +3,7 @@
        <%= simple_form_for [@animal, @booking] do |f| %>
            <%= f.input :start_date, as: :string, type: :text %>
            <%= f.input :end_date, as: :string, type: :text %>
+           <span style="font-weight: normal; padding: 20px;font-size: 1.3rem;"> $<%= @animal.daily_rate %>/day </span>
            <%= f.submit "Submit", class: "btn btn-primary" %>
         <% end %>
  </div>
