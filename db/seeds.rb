@@ -40,25 +40,33 @@ users = [user1, user2, user3, user4]
 puts 'Seeding animals'
 
 30.times do
-  animal = Animal.new(
-    name: Faker::Creature::Dog.name,
-    species: Faker::Creature::Animal.name,
-    age: Faker::Number.between(from: 1, to: 30),
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere provident molestiae nemo est ad unde quia vero, quos iure voluptatum labore quis magni iste, dolorum error voluptas, dolores commodi temporibus!',
-    gender: Animal::GENDERS.sample,
-    category: Animal::CATEGORIES.sample,
-    place_of_origin: Faker::Address.country,
-    daily_rate: Faker::Number.between(from: 10, to: 100),
-    photos: [],
-    user: users.sample)
-  2.times do
-    random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
-    file = URI.open(random_image_url)
-    animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
-  end
-  animal.save
-end
+  begin
+    animal = Animal.new(
+      name: Faker::Creature::Dog.name,
+      species: Faker::Creature::Animal.name,
+      age: Faker::Number.between(from: 1, to: 30),
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere provident molestiae nemo est ad unde quia vero, quos iure voluptatum labore quis magni iste, dolorum error voluptas, dolores commodi temporibus!',
+      gender: Animal::GENDERS.sample,
+      category: Animal::CATEGORIES.sample,
+      place_of_origin: Faker::Address.country,
+      daily_rate: Faker::Number.between(from: 10, to: 100),
+      photos: [],
+      user: users.sample)
+    2.times do
+      random_image_url = "https://loremflickr.com/500/350/#{animal.species.gsub(" ", "_")}"
+      file = URI.open(random_image_url)
+      animal.photos.attach(io: file, filename: "animal#{animal.name}#{animal.species}.jpg", content_type: 'image/jpg')
+    end
+    animal.save
+    puts "created an animal"
+  rescue
+    puts "Failed animal"
+    retry
+  else
 
+  end
+end
+puts "created #{Animal.all.size} animals"
 
 
 # Okay, now let's seed a few bookings with reviews
