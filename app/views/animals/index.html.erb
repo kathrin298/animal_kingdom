@@ -14,15 +14,52 @@
            <i class="fas fa-search"></i>
         <% end %>
       <% end %>
+    </div>
        <%= link_to "Or See All the Animals", search_path, class: "btn-flat"  %>
      </div>
   </div>
 </div>
-
-
-
 <%= render 'carousel' %>
-
+<div class="middle-container">
+  <div class="paragraph-holder">
+    <h1>Bring the wild to your backyard!</h1>
+    <hr>
+    <br>
+    <p>To get a real nature experience most people have to go through the painstaking hassle of driving hours out of the city, getting eaten alive by mosquitos, and suffering from crippling withdrawal due to lack of cell phone coverage.</p>
+    <br>
+    <p>That's where animal kingdom has you covered. Get a real wild experience, right in your own backyard! Because bored suburbanites love nothing more than stripping all difficulty and challenge out of life.</p>
+  </div>
+</div>
+<div class="bottom-container">
+  <div class="cards-container">
+    <h4 id="cards-header">Ready to host a party that <strong>really</strong> stands out?</h4>
+    <div class="homepage-card-product">
+      <img src="https://i.pinimg.com/originals/ed/27/c9/ed27c9a2f3974b678e9a7a0657a6450d.jpg" />
+      <div class="homepage-card-product-infos">
+        <h2>An unforgettable experience!</h2>
+        <h3>If Nancy thought the bouncy castle you had at the last party was fun, she's going to <strong>love</strong> playing little spoon to a grizzly bear.</h3>
+      </div>
+    </div>
+    <div class="homepage-card-product">
+      <div class="homepage-card-product-infos">
+        <h2>Bring some energy to your party!</h2>
+        <h3>After all, nothing keeps you on the edge of your seat like mixing drunk coworkers with carnivorous monsters.</h3>
+      </div>
+      <img src="https://metro.co.uk/wp-content/uploads/2014/06/ad136787399lion-whisperer-k.jpg?quality=90&strip=all" />
+    </div>
+    <div class="homepage-card-product">
+      <img src="https://images.boredomfiles.com/wp-content/uploads/2015/02/01-animal-selfies.jpg" />
+      <div class="homepage-card-product-infos">
+        <h2>Fun for the whole family!</h2>
+        <h3>Give your kids a gift they'll be <strong>really</strong> excited about, a selfie with animals they can use to status signal at their friends with!</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cta-container">
+  <h1>Ready to book?</h1>
+  <%= link_to "See all animals!", search_path, :class => "btn-flat btn-lg" %>
+</div>
 
 
 
